@@ -20,6 +20,9 @@ def main():
 			if event.type == pygame.QUIT:
 				return
 		
+		# Update game objects
+		player.update(dt)
+		
 		# Paint screen
 		screen.fill(pygame.Color(0, 0, 0))
 		player.draw(screen)
