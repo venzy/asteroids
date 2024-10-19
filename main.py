@@ -41,11 +41,18 @@ def main():
 			sprite.update(dt)
 		
 		# Detect collisions
-		for asteroid in asteroids:
-			a: CircleShape = asteroid
-			if a.colliding(player):
+		# Note the cast from any is just to help the IDE
+		for asteroid_any in asteroids:
+			asteroid: CircleShape = asteroid_any
+			if asteroid.colliding(player):
 				print("Game over!")
 				sys.exit()
+
+			for shot_any in shots:
+				shot: Shot = shot_any
+				if shot.colliding(asteroid):
+					asteroid.kill()
+					shot.kill()
 
 		# Paint screen
 		screen.fill(pygame.Color(0, 0, 0))
