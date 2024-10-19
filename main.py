@@ -15,12 +15,13 @@ def main():
 	clock = pygame.time.Clock()
 	dt = 0
 
+	# Groups to deal with objects in bulk
 	updatable = pygame.sprite.Group()
 	drawable = pygame.sprite.Group()
 	asteroids = pygame.sprite.Group()
 	shots = pygame.sprite.Group()
 
-	# New sprites will automatically be added to these containers upon construction
+	# New sprites will automatically be added to these groups upon construction
 	Player.containers = (updatable, drawable)
 	Asteroid.containers = (asteroids, updatable, drawable)
 	AsteroidField.containers = (updatable)
@@ -55,7 +56,7 @@ def main():
 					shot.kill()
 
 		# Paint screen
-		screen.fill(pygame.Color(0, 0, 0))
+		screen.fill(BACKGROUND_COLOR)
 		for sprite in drawable:
 			sprite.draw(screen)
 		pygame.display.flip()
