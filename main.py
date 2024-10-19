@@ -51,7 +51,7 @@ def main():
 			for shot_any in shots:
 				shot: Shot = shot_any
 				if shot.colliding(asteroid):
-					asteroid.kill()
+					asteroid.split()
 					shot.kill()
 
 		# Paint screen
